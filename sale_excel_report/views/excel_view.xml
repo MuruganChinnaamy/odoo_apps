@@ -12,8 +12,8 @@
 			            	<button name="print_quotation" string="Print (PDF)" type="object" states="sent,sale" class="o_sale_print"/>
 			            	
 			            	
-			            	<button name="print_excel_report" string="Print (Excel)" type="object" states="draft" class="btn-primary o_sale_print"/>
-			            	<button name="print_excel_report" string="Print (Excel)" type="object" states="sent,sale" class="o_sale_print"/>
+			            	<button name="generate_excel_report" string="Print (Excel)" type="object" states="draft" class="btn-primary o_sale_print"/>
+			            	<button name="generate_excel_report" string="Print (Excel)" type="object" states="sent,sale" class="o_sale_print"/>
 			            	
 			            </xpath>
 			        </field>

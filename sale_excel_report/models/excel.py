@@ -6,6 +6,7 @@ from io import BytesIO
 import xlsxwriter
 from odoo import api, models, _
 from odoo.exceptions import UserError
+from odoo import fields, models, api, _
 
 
 class SaleOrder(models.Model):
@@ -180,12 +181,13 @@ class SaleOrder(models.Model):
     def generate_excel_report(self):
         data = base64.encodestring(self.print_excel_report())
         report_name = 'Sale Report Excel.xls'
-        self.sudo().write({'filedata': data, 'filename': report_name})
+        report_id = self.env['sale.report.out'].sudo().create({'filedata': data, 'filename': 'sale report.xls'})
+        print (report_id,"233333333333333")
         return {
             'type': 'ir.actions.act_url',
-            'url': '/web/binary/download_document?model=pappaya.esi.report&field=filedata&id=%s&filename=%s.xls' % (self.id, report_name),
+            'url': '/web/binary/download_document?model=sale.report.out&field=filedata&id=%s&filename=%s.xls' % (report_id.id, report_name),
             'target': 'new',
-        }
+            }
 
 #     @api.multi
 #     def print_line_item_report(self):
@@ -261,23 +263,26 @@ class SaleOrder(models.Model):
             workbook.close()
             fp.seek(0)
             result = base64.b64encode(fp.read())
-            attachment_obj = self.env['ir.attachment']
-            filename = 'Sale Order Line Item Report'
-
-            attachment_id = attachment_obj.create(
-                {'name': filename,
-                 'datas_fname': filename,
-                 'datas': result})
-
-            download_url = '/web/content/' + \
-                           str(attachment_id.id) + '?download=True'
-            base_url = self.env['ir.config_parameter'].sudo(
-            ).get_param('web.base.url')
+            
+            report_id = self.env['sale.report.out'].sudo().create({'filedata': result, 'filename': 'sale report.xls'})
+            print (report_id,"233333333333333")
             return {
-                "type": "ir.actions.act_url",
-                "url": str(base_url) + str(download_url),
-                "target": "new",
-                'nodestroy': False,
-            }
+                'type': 'ir.actions.act_url',
+                'url': '/web/binary/download_document?model=sale.report.out&field=filedata&id=%s&filename=%s.xls' % (report_id.id, 'sale report.xls'),
+                'target': 'new',
+                }
         else:
             raise UserError(_('No records found'))
+        
+class SaleReportOut(models.TransientModel):
+    
+   _name = 'sale.report.out'
+   
+   filedata = fields.Binary('Download file', readonly=True)
+   filename = fields.Char('Filename', size=64, readonly=True)
+   
+   
+   
+   
+   
+     

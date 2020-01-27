@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Quotation / Sale Excel Report',
-    'version': '1.0',
+    'version': '11.0',
     'summary': 'Quotation / Sale Excel Report',
     'description': """
 Quotation / Sale Excel Report
