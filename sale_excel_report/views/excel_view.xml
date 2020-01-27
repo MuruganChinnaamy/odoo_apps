@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  
+              
+              <record id="sale_view_excel_report" model="ir.ui.view">
+			        <field name="name">sale.order.form.inherit.excel</field>
+			        <field name="model">sale.order</field>
+			        <field name="inherit_id" ref="sale.view_order_form"/>
+			        <field name="arch" type="xml">
+			            <xpath expr="//button[@name='print_quotation']" position="replace">
+			            	<button name="print_quotation" string="Print (PDF)" type="object" states="draft" class="btn-primary o_sale_print"/>
+			            	<button name="print_quotation" string="Print (PDF)" type="object" states="sent,sale" class="o_sale_print"/>
+			            	
+			            	
+			            	<button name="print_excel_report" string="Print (Excel)" type="object" states="draft" class="btn-primary o_sale_print"/>
+			            	<button name="print_excel_report" string="Print (Excel)" type="object" states="sent,sale" class="o_sale_print"/>
+			            	
+			            </xpath>
+			        </field>
+			    </record>
+              
+              <!-- <act_window id="action_excel_report"
+	            name="Excel"
+	            src_model="sale.order"
+	            res_model="sale.order.excel"
+	            view_type="form" view_mode="form"
+	            key2="client_action_multi" target="new"
+	            /> -->
+		
+  
+  
+</odoo>
