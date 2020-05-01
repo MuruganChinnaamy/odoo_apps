@@ -10,13 +10,16 @@
     """,
     'author' : 'Murugan Chinnasamy',
     'website': 'www.cmstech.com',
+    'license': "OPL-1",
+    'complexity': 'easy',
     'depends': ['base'],
-    'init_xml': [],
     'data': [
              ], 
-    'installable': True,
-    'application': False,
-    'auto_install': False,
+'images': ['static/description/icon.png'],    
+'installable': True,
+    'application': True,
+
     
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+
+
