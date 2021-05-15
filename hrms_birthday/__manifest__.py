@@ -10,7 +10,7 @@
     'data': [
        'data/shedule_action.xml'
     ],
-    'images': ['static/description/banner.jpg'],
+    'images': ['static/description/icon.png'],
     'installable': True,
     'auto_install': False,
     'application': False,
