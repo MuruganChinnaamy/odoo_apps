@@ -24,7 +24,7 @@
         <record id="birthday_mail_template1" model="mail.template">
 			<field name="name">Birthday Notification 1</field>
 			<field name="model_id" ref="hrms_birthday.model_hr_employee"/>
-			<field name="email_from">HR ULTS&lt;${object.env.user.email}&gt;</field>			
+			<field name="email_from">${object.env.user.email}&gt;</field>			
 			<field name="email_to">${object.work_email}</field>
 			<field name="subject">Happy Birthday</field>
             <field name="body_html"><![CDATA[
